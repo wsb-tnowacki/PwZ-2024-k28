@@ -10,8 +10,10 @@ Strona o nas
         Treść strony o nas Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed tempora iusto, eaque laborum recusandae aliquid ipsam numquam totam explicabo. Illo dolore natus aut dolor ab perspiciatis voluptatum. Corrupti, expedita rem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt alias ipsa nisi quaerat ut facere accusamus aperiam quas, labore veritatis eius omnis quos sint praesentium quasi optio eum similique harum!
     </div>
     <ol>
-        <?php foreach ($zadania ?? '' as $zadanie) : ?>
-        <li><?= $zadanie ?></li>
-        <?php endforeach; ?>
+        @foreach ($zadania as $zadanie)
+            <li>
+               {{ $zadanie }} 
+            </li>
+        @endforeach
     </ol>
 @endsection
