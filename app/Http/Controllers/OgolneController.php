@@ -23,4 +23,8 @@ class OgolneController extends Controller
         ];
         return view('ogolne.onas', ['zadania'=> $zadania]);
     }
+
+    public function test(string $test1, string $id1)  {
+        return "id: '$id1', test: '$test1'";
+    }
 }
