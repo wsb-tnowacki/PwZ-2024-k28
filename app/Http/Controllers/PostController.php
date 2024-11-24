@@ -12,7 +12,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return "index";
+        $posty = Post::all();
+        return view('post.lista',compact('posty'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return "create";
+        return view('post.dodaj');
     }
 
     /**
@@ -28,7 +29,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return "store request: '$request' ";
+        $post = new Post();
+        $post->tytul = $request['tytul'];
+        $post->autor = request('autor');
+        $post->email = request('email');
+        $post->tresc = request('tresc');
+        $post->save();
+        return redirect()->route('post.index');
     }
 
     /**
@@ -36,7 +43,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return "show post: '$post'";
+        return view('post.pokaz',compact('post'));
     }
 
     /**
