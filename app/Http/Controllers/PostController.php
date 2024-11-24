@@ -35,6 +35,12 @@ class PostController extends Controller
         $post->email = request('email');
         $post->tresc = request('tresc');
         $post->save(); */
+        $request->validate([
+            'tytul' => 'required|min:3|max:200',
+            'autor' => ['required','min:4','max:100'],
+            'email' => ['required','email:rfc,dns','max:100'],
+            'tresc' => ['required','min:5'],
+        ]);
         $post->create($request->all());
         return redirect()->route('post.index')->with('message','Dodano poprawnie posta');
     }
