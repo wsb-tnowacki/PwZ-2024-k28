@@ -24,7 +24,18 @@
     <div class="for-group">
         <label for="tresc">Treść</label>
         <textarea class="form-control" name="tresc" id="tresc" cols="4" disabled>{{$post->tresc}}</textarea>
-    </div>    
+    </div>   
+    <div class="d-flex">
+        <a href="{{route('post.edit', $post->id)}}">
+            <button class="btn btn-success m-1" type="submit">Edytuj</button>
+        </a>
+        <form action="{{route('post.destroy', $post->id)}}" method="post" onsubmit="return confirm('Czy na pewno usunąć ten post? ')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger m-1" type="submit">Usuń</button>
+        </form>
+    </div>
+     
 @endisset
 <a href="{{route('post.index')}}"><button class="btn btn-primary m-1" type="submit">Powrót do listy</button></a>
 @endsection
