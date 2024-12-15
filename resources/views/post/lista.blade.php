@@ -19,9 +19,10 @@
 <tbody>
     @isset($posty)
         @if($posty->count())
+        @php($lp=1)
             @foreach ($posty as $post)
                 <tr>
-                    <td>{{$post->id}}</td>
+                    <td>{{$lp++}}</td>
                     <td><a href="{{route('post.show',$post->id)}}">{{$post->tytul}}</a></td>
                     <td>{{$post->autor}}</td>
                     <td>{{date('j F Y',strtotime($post->created_at))}}</td>
@@ -42,14 +43,17 @@
             @endforeach
         @else
             <tr>
-                <td colspan="4">Nie ma żadnych postów</td>
+                <td colspan="5" >Nie ma żadnych postów</td>
             </tr>
         @endif
     @else
         <tr>
-            <td colspan="4">Nie ma żadnych postów</td>
+            <td colspan="5">Nie ma żadnych postów</td>
         </tr>
     @endisset
 </tbody>
 </table>
+@isset($posty)
+{{$posty->links()}}    
+@endisset
 @endsection
