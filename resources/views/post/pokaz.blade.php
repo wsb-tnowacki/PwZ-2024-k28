@@ -25,6 +25,7 @@
         <label for="tresc">Treść</label>
         <textarea class="form-control" name="tresc" id="tresc" cols="4" disabled>{{$post->tresc}}</textarea>
     </div>   
+    @auth
     <div class="d-flex">
         <a href="{{route('post.edit', $post->id)}}">
             <button class="btn btn-success m-1" type="submit">Edytuj</button>
@@ -34,7 +35,9 @@
             @method('DELETE')
             <button type="submit" class="btn btn-danger m-1" type="submit">Usuń</button>
         </form>
-    </div>
+    </div>        
+    @endauth
+
      
 @endisset
 <a href="{{route('post.index')}}"><button class="btn btn-primary m-1" type="submit">Powrót do listy</button></a>

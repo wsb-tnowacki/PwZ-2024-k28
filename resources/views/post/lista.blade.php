@@ -2,7 +2,10 @@
 @section('tytul','Lista postów')
 @section('podtytul', 'Lista postów')
 @section('tresc')
+@auth
 <a href="{{route('post.create')}}" class="btn btn-primary m-1"> Dodaj posta</a>
+@endauth
+
 <table class="table table-striped">
 <thead>
     <th scope="col">Lp</th>
